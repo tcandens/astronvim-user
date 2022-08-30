@@ -48,7 +48,7 @@ local config = {
     },
     g = {
       mapleader = " ", -- sets vim.g.mapleader
-      catppuccin_flavour = "macchiato"
+      catppuccin_flavour = "macchiato",
     },
   },
   -- If you need more control, you can use the function()...end notation
@@ -187,10 +187,8 @@ local config = {
       {
         "catppuccin/nvim",
         as = "catppuccin",
-        config = function()
-          require('catppuccin').setup {}
-        end
-      }
+        config = function() require("catppuccin").setup {} end,
+      },
       -- You can disable default plugins as follows:
       -- ["goolord/alpha-nvim"] = { disable = true },
 
@@ -225,7 +223,7 @@ local config = {
         filtered_items = {
           hide_dotfiles = false,
         },
-      }
+      },
     },
     -- All other entries override the require("<key>").setup({...}) call for default plugins
     ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
@@ -295,6 +293,10 @@ local config = {
 
   -- Modify which-key registration (Use this with mappings table in the above.)
   ["which-key"] = {
+    triggers_blacklist = {
+      i = { "j", "k", "<leader>" },
+      v = { "j", "k", "<leader>" },
+    },
     -- Add bindings which show up as group name
     register_mappings = {
       -- first key is the mode, n == normal mode
